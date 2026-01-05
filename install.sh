@@ -2,17 +2,28 @@
 
 set -e
 
-REPO_URL="https://github.com/nucbio/ubuntu-setup.git"
+REPO_URL="https://github.com/nucbio/ubuntu-setup/archive/refs/heads/main.zip"
 INSTALL_DIR="$HOME/.ubuntu-setup"
 
 echo "Starting Ubuntu setup..."
 
-# Clone or update repo
+# Remove existing directory if it exists
 if [ -d "$INSTALL_DIR" ]; then
-    git -C "$INSTALL_DIR" pull
-else
-    git clone "$REPO_URL" "$INSTALL_DIR"
+    echo "Removing existing installation..."
+    rm -rf "$INSTALL_DIR"
 fi
+
+if ! command -v wget > /dev/null 2>&1; then
+    echo "Error: wget is not available. Installing it now..."
+    sudo apt update && sudo apt install -y wget
+fi
+
+echo "Downloading repository with wget..."
+wget "$REPO_URL" -O /tmp/ubuntu-setup.zip
+
+unzip -q /tmp/ubuntu-setup.zip -d /tmp/
+mv /tmp/ubuntu_setup-main "$INSTALL_DIR"
+rm /tmp/ubuntu-setup.zip
 
 cd "$INSTALL_DIR"
 
