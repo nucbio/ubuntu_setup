@@ -2,7 +2,7 @@
 
 set -e
 
-REPO="https://github.com/nucbio/ubuntu-setup/archive/refs/heads/main.zip"
+REPO="https://github.com/nucbio/ubuntu_setup/archive/refs/heads/main.zip"
 INSTALL_DIR="$HOME/.ubuntu-setup"
 
 echo "Starting Ubuntu setup..."
