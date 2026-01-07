@@ -14,8 +14,6 @@ sudo apt-get install -y ubuntu-wallpapers-* edgy-wallpapers feisty-wallpapers gu
 gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/ubuntu_wallpaper_16_10_02_by_screen_name_007.jpg'
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'de+qwerty')]"
 gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle']"
-gsettings set org.gnome.Weather locations "[<(uint32 2, <('Berlin', 'EDDT', true, [(0.91746141594945008, 0.23241968454167572)], [(0.91658875132345297, 0.23387411976724018)])>)>]"
-gsettings set org.gnome.GWeather temperature-unit 'centigrade'
 
 # Gedit settings
 gsettings set org.gnome.gedit.preferences.editor tabs-size 4
@@ -26,8 +24,6 @@ gsettings set org.nemo.preferences show-hidden-files true
 gsettings set org.nemo.icon-view thumbnail-size 40
 gsettings set org.nemo.preferences default-folder-viewer 'list-view'
 gsettings set org.nemo.list-view default-visible-columns "['name', 'size', 'type', 'date_modified', 'permissions']"
-gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
-gsettings set org.gnome.shell.extensions.desktop-icons show-home false
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
 gsettings set org.gnome.desktop.peripherals.mouse speed '1' # mouse speed to max

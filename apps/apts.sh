@@ -17,6 +17,7 @@
 
 if [[ "$INSTALL_OPT" != "Home" ]]; then
   sudo apt install -y mdadm
+  sudo apt install -y ncftp	## for GEO FTP Transfer
 fi
 
 if [[ "$INSTALL_OPT" == "Home" ]]; then
@@ -26,6 +27,3 @@ if [[ "$INSTALL_OPT" == "Home" ]]; then
   sudo apt install -y anki
 fi
 
-if [[ "$INSTALL_OPT" != "Home" ]]; then
-  sudo apt install -y ncftp	## for GEO FTP Transfer
-fi
