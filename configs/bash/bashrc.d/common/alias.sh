@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Directories
 alias ..='cd ..'
 alias ...='cd ../..'

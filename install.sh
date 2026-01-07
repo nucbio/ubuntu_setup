@@ -16,7 +16,7 @@ echo "Installing apps and settings"
 # Install installers 
 source ${UBUNTU_SETUP_DIR}/install/installers.sh
 
-# Install terminal tools
+# Install apps
 source ${UBUNTU_SETUP_DIR}/install/install_apps.sh
 
 # Gnome settings
