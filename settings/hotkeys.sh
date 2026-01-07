@@ -18,10 +18,10 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Shift>F11']
 
 
 # Move window one monitor to the left
-gsettings set org.gnome.mutter.keybindings move-monitor-left "['<Alt><Super>j']"
+#gsettings set org.gnome.mutter.keybindings move-monitor-left "['<Alt><Super>j']"
 
 # Move window one monitor to the right
-gsettings set org.gnome.mutter.keybindings move-monitor-right "['<Alt><Super>k']"
+#gsettings set org.gnome.mutter.keybindings move-monitor-right "['<Alt><Super>k']"
 
 # Move window one workspace to the left
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Shift><Super>j']"
@@ -96,8 +96,8 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Supe
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super><Control>j']"
 
 # Switch monitor focus
-gsettings set org.gnome.desktop.wm.keybindings switch-to-monitor-left "['<Super><Shift>k']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-monitor-right "['<Super><Shift>j']"
+#gsettings set org.gnome.desktop.wm.keybindings switch-to-monitor-left "['<Super><Shift>k']"
+#gsettings set org.gnome.desktop.wm.keybindings switch-to-monitor-right "['<Super><Shift>j']"
 
 # Move window to workspace
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift><Alt>k']"
