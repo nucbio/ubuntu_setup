@@ -6,6 +6,7 @@
 
   sudo snap install code  --classic # Visual Studio Code
   sudo snap install cmake --classic
+  sudo snap install alacritty --classic
   sudo snap install tmux  --classic
   sudo snap install nvim  --classic
 
