@@ -9,7 +9,7 @@ gsettings set org.gnome.desktop.session idle-delay 0
 # GUI-like choice
 source ${UBUNTU_SETUP_DIR}/install/00_versions.sh
 source ${UBUNTU_SETUP_DIR}/apps/required/app_gum.sh >/dev/null
-source ${UBUNTU_SETUP_DIR}/install/set_choise.sh
+source ${UBUNTU_SETUP_DIR}/install/set_choice.sh
 
 echo "Installing apps and settings"
 
@@ -25,6 +25,6 @@ source ${UBUNTU_SETUP_DIR}/install/settings.sh
 ###############################################################################
 # Revert to normal idle and lock settings
 gsettings set org.gnome.desktop.screensaver lock-enabled true
-gsettings set org.gnome.desktop.session idle-delay 300
+gsettings set org.gnome.desktop.session idle-delay 600
 
 echo "Setup complete. Please reboot."

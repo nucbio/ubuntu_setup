@@ -31,4 +31,14 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature '3700'
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize' # minizize window on icon click
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing' # inactivate screensaver
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'google-chrome.desktop', 'nemo.desktop', 'obsidian_obsidian.desktop', 'zotero-snap_zotero-snap.desktop', 'org.gnome.gedit.desktop', 'gimp_gimp.desktop', 'inkscape_inkscape.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'zoom-client_zoom-client.desktop', 'calibre-gui.desktop', 'gramps.desktop', 'kdenlive_kdenlive.desktop']"
+gsettings set org.gnome.shell favorite-apps "[ \
+    'alacritty_alacritty.desktop', \
+    'google-chrome.desktop', \ 
+    'obsidian_obsidian.desktop', \
+    'nemo.desktop', \
+    'zotero-snap_zotero-snap.desktop', \
+    'org.gnome.gedit.desktop', \
+    'gimp_gimp.desktop', \
+    'inkscape_inkscape.desktop', \
+    'zoom-client_zoom-client.desktop', \
+    'calibre-gui.desktop']"

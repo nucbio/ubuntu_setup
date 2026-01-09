@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # printf "\n\nUPDATE-UPGRAGE\n"
 sudo apt update -y && sudo apt upgrade -y
 

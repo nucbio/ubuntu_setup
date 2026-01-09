@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASH_SETUP_DIR=${UBUNTU_SETUP_DIR}/configs/bash
+BASH_SETUP_DIR=${UBUNTU_SETUP_DIR}/configs/bashrc.d
 BASH_LOCAL_DIR=$HOME/.bashrc.d
 
 # Check if directory already exists and abort if it does
@@ -13,32 +13,22 @@ fi
 mkdir -p "$BASH_LOCAL_DIR"
 
 # Copy files from common directory
-if [ -d "${BASH_SETUP_DIR}/bashrc.d/common" ]; then
-    cp "${BASH_SETUP_DIR}/bashrc.d/common"/*.sh "$BASH_LOCAL_DIR/"
-else
-    echo "Error: Source directory ${BASH_SETUP_DIR}/bashrc.d/common not found." >&2
-    exit 1
-fi
+cp "${BASH_SETUP_DIR}/common"/*.sh "$BASH_LOCAL_DIR/"
 
-# Copy additional files for local computers
+# Copy additional files for local pcs
 if [[ "$INSTALL_OPT" == "Home" || "$INSTALL_OPT" == "Work" ]]; then
-    if [ -d "${BASH_SETUP_DIR}/bashrc.d/ws" ]; then
-        cp "${BASH_SETUP_DIR}/bashrc.d/ws"/*.sh "$BASH_LOCAL_DIR/"
-    else
-        echo "Warning: Source directory ${BASH_SETUP_DIR}/bashrc.d/ws not found." >&2
-    fi
+  cp "${BASH_SETUP_DIR}/local"/*.sh "$BASH_LOCAL_DIR/"
 fi
 
-# Copy additional files for servers
+# Copy additional files for ws
+if [[ "$INSTALL_OPT" == "Home" ]]; then
+  cp "${BASH_SETUP_DIR}/home"/*.sh "$BASH_LOCAL_DIR/"
+fi
+
+# Copy additional files for ws
 if [[ "$INSTALL_OPT" == "Bio" ]]; then
-    if [ -d "${BASH_SETUP_DIR}/bashrc.d/ws" ]; then
-        cp "${BASH_SETUP_DIR}/bashrc.d/ws"/*.sh "$BASH_LOCAL_DIR/"
-    else
-        echo "Warning: Source directory ${BASH_SETUP_DIR}/bashrc.d/ws not found." >&2
-    fi
+  cp "${BASH_SETUP_DIR}/ws"/*.sh "$BASH_LOCAL_DIR/"
 fi
-
-# Sort out Unique files
 
 # Create startup directory and move files starting with "start"
 mkdir -p "$BASH_LOCAL_DIR/startup"
@@ -52,11 +42,6 @@ if [ -f "$HOME/.bashrc" ]; then
     echo "Existing .bashrc backed up to ~/.bashrc.backup.$(date +%Y%m%d_%H%M%S)"
 fi
 
-if [ -f "$BASH_LOCAL_DIR/.bashrc" ]; then
-    mv "$BASH_LOCAL_DIR/.bashrc" "$HOME/.bashrc"
-    echo ".bashrc file moved from $BASH_LOCAL_DIR to home directory"
-else
-    echo "Warning: .bashrc file not found in $BASH_LOCAL_DIR" >&2
-fi
+# Add custom .bashrc
+mv "$BASH_SETUP_DIR/.bashrc" "$HOME/.bashrc"
 
-echo "Bash configuration files copied successfully to $BASH_LOCAL_DIR"
