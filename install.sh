@@ -8,7 +8,7 @@ gsettings set org.gnome.desktop.session idle-delay 0
 
 # GUI-like choice
 source ${UBUNTU_SETUP_DIR}/install/00_versions.sh
-source ${UBUNTU_SETUP_DIR}/apps/required/app_gum.sh >/dev/null
+source ${UBUNTU_SETUP_DIR}/apps_install/required/app_gum.sh >/dev/null
 source ${UBUNTU_SETUP_DIR}/install/set_choice.sh
 
 echo "Installing apps and settings"
