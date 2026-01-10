@@ -1,14 +1,34 @@
 #!/bin/bash
 
-# Install dependensies
-sudo apt install -y cmake g++ pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+ALACRITTY_RELEASE_TAG="${ALACRITTY_RELEASE_TAG:-v0.13.2}"
 
-# Install cargo
-sudo apt install -y cargo
+# Dependencies for packages
+sudo apt update -y
+sudo apt install -y  \
+  cmake              \
+  g++                \
+  pkg-config         \
+  libfontconfig1-dev \
+  libxcb-xfixes0-dev \
+  libxkbcommon-dev   \
+  python3            \
+  curl
+
+## =Install rustup
+if [ ! -d "$HOME/.cargo" ]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+    | sh -s -- -y --default-toolchain stable --no-modify-path
+fi
+
+source "$HOME/.cargo/env"
+
+# Update rust
+rustup update stable
+
 # Install Alacritty
 cargo install \
   --git https://github.com/alacritty/alacritty.git \
-  --tag $ALACRITTY_RELEASE_TAG \
+  --tag "$ALACRITTY_RELEASE_TAG" \
   --locked \
   --no-default-features \
   --features wayland
