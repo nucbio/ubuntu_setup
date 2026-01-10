@@ -27,7 +27,6 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
 # remove Home directory from Desktop
 gsettings set org.gnome.shell.extensions.ding show-home false
 
-## available themes `ls -d /usr/share/themes/* |xargs -L 1 basename` (test if still working)
 # get more background images
 sudo apt-get install -y ubuntu-wallpapers-* edgy-wallpapers feisty-wallpapers gutsy-wallpapers
 # set favorit background image
