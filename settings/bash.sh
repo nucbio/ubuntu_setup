@@ -44,4 +44,6 @@ fi
 
 # Add custom .bashrc
 mv "$BASH_SETUP_DIR/.bashrc" "$HOME/.bashrc"
+mv "$BASH_SETUP_DIR/.profile" "$HOME/.profile"
+mv "$BASH_SETUP_DIR/.inputrc" "$HOME/.inputrc"
 

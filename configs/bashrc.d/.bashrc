@@ -55,5 +55,13 @@ if [[ -d "$HOME/.bashrc.d" ]]; then
     done < <(find "$HOME/.bashrc.d" -type f -name "*.sh" -print0 2>/dev/null)
 fi
 
-export PATH="$PATH:${HOME}/.local/bin"
+# fzf - fuzzy search - interactive features
+if [ -d "$HOME/.tools/fzf" ]; then
+  if [ -f "$HOME/.tools/fzf/shell/key-bindings.bash" ]; then
+    source "$HOME/.tools/fzf/shell/key-bindings.bash"
+  fi
 
+  if [ -f "$HOME/.tools/fzf/shell/completion.bash" ]; then
+    source "$HOME/.tools/fzf/shell/completion.bash"
+  fi
+fi
