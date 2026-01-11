@@ -26,3 +26,6 @@ ZOXIDE_RELEASE_TAG="v0.9.7"
 
 ## bat - modern cat
 BAT_RELEASE_TAG="v0.26.1"
+
+## yazi - terminal file manager
+YAZI_RELEASE_TAG="v26.1.4"

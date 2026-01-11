@@ -54,3 +54,11 @@ cargo install \
   --tag "$BAT_RELEASE_TAG" \
   --locked
 
+## Yazi - Blazing Fast Terminal File Manager
+YAZI_RELEASE_TAG="${YAZI_RELEASE_TAG:-v26.1.4}"
+# Install ripgrep
+cargo install \
+  --git https://github.com/sxyazi/yazi.git \
+  --tag "$YAZI_RELEASE_TAG" \
+  --locked
+
