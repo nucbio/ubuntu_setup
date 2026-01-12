@@ -1,6 +1,8 @@
 #!/bin/bash
 printf "\n\n INSTALL Python3 libraries\n"
 sudo apt install -y python3-pip
+# for old code compatibility
+sudo apt install -y python-is-python3
 
 pip3 install --upgrade pip
 pip3 install numpy scipy matplotlib pandas
@@ -14,3 +16,4 @@ pip3 install -U jupyter ipython
 # to run virtual-host (do not use sudo):
 # jupyter notebook --allow-root
 # in browser: localhost.8888/tree
+

@@ -4,12 +4,13 @@
 
   sudo apt install -y openssh-server
   sudo apt install -y gedit-plugin-draw-spaces
-  sudo apt install -y pandoc
+  sudo apt install -y pandoc pandoc-citeproc
   sudo apt install -y nemo
   sudo apt install -y caffeine
   sudo apt install -y goldendict
   sudo apt install -y texstudio
   sudo apt install -y pdfarranger
+  sudo apt install -y 7zip
   sudo apt install -y gparted
   sudo apt install -y ripgrep
   sudo apt install -y alacarte
@@ -46,3 +47,8 @@ if [[ "$INSTALL_OPT" != "Bio-WS" ]]; then
   sudo snap install obsidian --classic
   sudo snap install telegram-desktop
 fi
+
+if [[ "$INSTALL_OPT" == "Bio-WS" | "$INSTALL_OPT" == "Work-WS" ]]
+  sudo apt install -y mdadm
+fi
+
