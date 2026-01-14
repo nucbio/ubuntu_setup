@@ -6,13 +6,12 @@ return {
   priority = 100,  -- Load early
   opts = {
     ensure_installed = {
-      "bash", "c", "diff", "html", "lua", "luadoc",
+      "bash", "c", "diff", "html", "lua", "luadoc", "r"
       "markdown", "markdown_inline", "query", "vim", "vimdoc",
     },
     auto_install = true,
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = { "ruby" },
     },
     indent = { enable = false, disable = { "ruby" } },
   },
