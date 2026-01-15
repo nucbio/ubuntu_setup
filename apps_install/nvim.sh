@@ -3,4 +3,6 @@
 sudo snap install nvim  --classic
 
 # Nvim configuration
-cp -r ~/.local/share/ubuntu-setup/configs/nvim ~/.config/
+#Install from github
+git clone https://github.com/nucbio/nvim-config.git $HOME/.config/nvim
+#cp -r ~/.local/share/ubuntu-setup/configs/nvim ~/.config/
