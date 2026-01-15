@@ -14,7 +14,7 @@ RSTUDIO_URL="${RSTUDIO_URL:-https://download1.rstudio.org/electron/jammy/amd64/r
 if wget --spider --quiet "$RSTUDIO_URL"; then
   mkdir -p ~/tmp && cd ~/tmp
   wget "$RSTUDIO_URL"
-  $RSTUDIO_DEB="${RSTUDIO_URL##*/}"
+  RSTUDIO_DEB="${RSTUDIO_URL##*/}"
   sudo gdebi -n "$RSTUDIO_DEB"
 else
     echo "Error: The RStudio package URL is invalid or unreachable."

@@ -1,6 +1,9 @@
 #!/usr/bin/bash
 set -e
 
+# To run install.sh after download
+UBUNTU_SETUP_DIR=${UBUNTU_SETUP_DIR:-$HOME/.local/share/ubuntu-setup}
+
 # Ensure computer doesn't go to sleep or lock while installing
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.session idle-delay 0
@@ -21,6 +24,9 @@ source ${UBUNTU_SETUP_DIR}/install/install_apps.sh
 
 # Gnome settings
 source ${UBUNTU_SETUP_DIR}/install/settings.sh
+
+# Install R
+source ${UBUNTU_SETUP_DIR}/langs/r.sh
 
 ###############################################################################
 # Revert to normal idle and lock settings

@@ -1,9 +1,17 @@
 #!/bin/bash
 
+# Check if the Cargo environment file exists
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+else
+    echo "Error: Cargo environment file not found at $HOME/.cargo/env" >&2
+    exit 1
+fi
+
 ## TMUX
 sudo snap install tmux  --classic
 # Tmux configuration
-cp ~/.local/share/ubuntu-setup/configs/tmux/.tmux.conf ~/
+cp $HOME/.local/share/ubuntu-setup/configs/tmux/.tmux.conf $HOME/
 
 ## Install fzf - fuzzy search (https://github.com/junegunn/fzf)
 mkdir -p $HOME/.tools
@@ -55,10 +63,12 @@ cargo install \
   --locked
 
 ## Yazi - Blazing Fast Terminal File Manager
-YAZI_RELEASE_TAG="${YAZI_RELEASE_TAG:-v26.1.4}"
-# Install ripgrep
-cargo install \
-  --git https://github.com/sxyazi/yazi.git \
-  --tag "$YAZI_RELEASE_TAG" \
-  --locked
-
+# NOTE: some problems with yazi installation need to test
+# YAZI_RELEASE_TAG="${YAZI_RELEASE_TAG:-v26.1.4}"
+# cargo install --git https://github.com/sxyazi/yazi.git --force yazi-build
+# # Install ripgrep
+# cargo install \
+#   --git https://github.com/sxyazi/yazi.git yazi-cli\
+#   --tag "$YAZI_RELEASE_TAG" \
+#   --locked
+#

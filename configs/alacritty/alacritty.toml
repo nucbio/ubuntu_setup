@@ -1,5 +1,5 @@
 # Launch Alacritty with tmux
-[shell] # newer versions need terminal.shell!
+[terminal.shell] # old versions need shell!
 program = "/usr/bin/bash"  # or /bin/zsh, /usr/bin/fish, etc.
 args = ["-l", "-c", "tmux new-session -A -s main"]
 

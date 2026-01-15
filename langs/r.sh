@@ -11,12 +11,11 @@ sudo apt update
 
 ## Blood and pain: R v4.0.0+
 sudo apt install -y build-essential
+sudo apt install -y gfortran
 sudo apt install -y libcurl4-openssl-dev
 sudo apt install -y libbz2-dev
 sudo apt install -y libpcre2-dev
 sudo apt install -y libmagick++-dev libpng-dev libjpeg-dev
-sudo apt install -y ninja-build #TODO: also from hpc (remove from here)
-sudo apt install -y meson # TODO:guess was from hpc (remove from here)
 sudo apt install -y libcairo2-dev
 sudo apt install -y libharfbuzz-dev
 sudo apt install -y libfribidi-dev
@@ -28,7 +27,6 @@ sudo apt install -y texlive texlive-fonts-extra texinfo
 sudo apt install -y openjdk-11-jdk
 sudo apt install -y libssl-dev
 sudo apt install -y libxml2-dev
-
 
 ## R local install
 RDIR="$HOME/.tools/R/R-$R_VERSION"

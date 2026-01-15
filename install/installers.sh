@@ -21,3 +21,7 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 sudo apt install -y dconf-editor
 sudo apt install -y gdebi
 sudo apt install -y alien  # rpm to deb converter
+
+# Ninja Meson
+sudo apt install -y ninja-build
+sudo apt install -y meson
