@@ -11,6 +11,7 @@ gsettings set org.gnome.shell favorite-apps "[ \
     'alacritty.desktop', \
     'google-chrome.desktop', \
     'obsidian_obsidian.desktop', \
+    'org.eduvpn.client.desktop', \
     'nemo.desktop', \
     'zotero-snap_zotero-snap.desktop', \
     'org.gnome.gedit.desktop', \

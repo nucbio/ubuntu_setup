@@ -27,6 +27,7 @@ source ${UBUNTU_SETUP_DIR}/install/settings.sh
 
 # Install R
 source ${UBUNTU_SETUP_DIR}/langs/r.sh
+Rscript --vanilla "${UBUNTU_SETUP_DIR}/langs/libraries.R"
 
 ###############################################################################
 # Revert to normal idle and lock settings
