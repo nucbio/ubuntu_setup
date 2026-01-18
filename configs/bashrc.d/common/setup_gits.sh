@@ -1,56 +1,70 @@
 #!/bin/bash
 
+# Select repos from GitHub and GitLab to clone
 setup_gits() {
-    # If arguments are passed, use them; otherwise, use the global REPOS array
-    if [ $# -gt 0 ]; then
-        local INPUT_LIST=("$@")
-    else
-        local INPUT_LIST=("${REPOS[@]}")
-    fi
-  
     local GITS_DIR="$HOME/gits"
     
-    local SELECTED_REPOS=$(gum choose \
+    #----------------------------
+    # Get repositories
+    # ---------------------------
+    # Get GitHub repos (SSH URLs)
+    GITHUB_REPOS=$(
+      curl -s "https://api.github.com/users/${GITHUB_USR}/repos?per_page=100&type=all" \
+      | grep -o '"ssh_url":[^,]*' \
+      | cut -d '"' -f 4
+    )
+
+    # Get GitLab repos (SSH URLs)
+    GITLAB_REPOS=$(
+      curl -s "https://gitlab.com/api/v4/users/${GITLAB_USR}/projects?per_page=100" \
+      | grep -oP '"ssh_url_to_repo":"\K[^"]+'
+    )
+    # Combine repos into a single array
+    mapfile -t REPOS < <(printf "%s\n%s" "$GITHUB_REPOS" "$GITLAB_REPOS")
+
+    # -----------------------------
+    # Select repos using gum
+    # -----------------------------
+    SELECTED_REPOS=$(gum choose \
         --no-limit \
         --height 14 \
         --header "Select repositories (Space to select, Enter to confirm)" \
-        --selected "$(IFS=,; echo "${INPUT_LIST[*]}")" \
-        "${INPUT_LIST[@]}"
-)
+        "${REPOS[@]}"
+    )
 
-  # Create GITS_DIR if it doesn't exist
-  if [ ! -d "$GITS_DIR" ]; then
-      echo "Creating directory: $GITS_DIR"
-      mkdir -p "$GITS_DIR"
-  fi
+    [ -z "$SELECTED_REPOS" ] && {
+        echo "No repositories selected."
+        return 0
+    }
 
-  cd "$GITS_DIR" || exit 1
+    # -----------------------------
+    # Prepare destination directory
+    # -----------------------------
+    mkdir -p "$GITS_DIR"
+    cd "$GITS_DIR" || exit 1
 
-  for REPO in $SELECTED_REPOS; do
-      
-      echo "----------------------------------------"
-      echo "Processing: $REPO"
-      
-      HOST="${REPO%%:*}"
-      USER_REPO="${REPO#*:}"
-      USER_NAME="${USER_REPO%/*}"
-      REPO_NAME="${USER_REPO#*/}"
-      REPO_PATH="$GITS_DIR/$REPO_NAME"
+    # -----------------------------
+    # Clone selected repositories
+    # -----------------------------
+    for REPO in $SELECTED_REPOS; do
+        echo "----------------------------------------"
+        echo "Cloning: $REPO"
 
-      if [ -d "$REPO_PATH" ]; then
-          echo "Repository $REPO already exists. Skipping."
-          continue
-      else
-          cd "$GITS_DIR" || exit 1
-          if git clone "https://$HOST/$USER_REPO.git"; then
-              cd "$REPO_PATH" || exit
-              git remote set-url origin "git@$HOST:$USER_REPO.git"
-              git remote -v
-          else
-              echo "Failed to clone $REPO"
-          fi
-      fi
-  done
+        REPO_NAME=$(basename "$REPO" .git)
+        REPO_PATH="$GITS_DIR/$REPO_NAME"
+
+        if [ -d "$REPO_PATH" ]; then
+            echo "Repository $REPO_NAME already exists. Skipping."
+            continue
+        fi
+
+        if git clone "$REPO"; then
+            echo "Cloned $REPO_NAME"
+        else
+            echo "Failed to clone $REPO"
+        fi
+    done
 
     echo "Done! All repositories processed."
 }
+
